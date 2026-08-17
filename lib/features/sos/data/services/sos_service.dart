@@ -22,8 +22,7 @@ class SOSService {
 
   int getRemainingCooldown() {
     if (_lastAlertTime == null) return 0;
-    final remaining =
-        30 - DateTime.now().difference(_lastAlertTime!).inSeconds;
+    final remaining = 30 - DateTime.now().difference(_lastAlertTime!).inSeconds;
     return remaining > 0 ? remaining : 0;
   }
 
@@ -134,8 +133,7 @@ class SOSService {
         await FirebaseHelper.createNotification({
           'user_id': admin['id'],
           'title': '🚨 SOS Alert',
-          'body':
-              '${alert.userName ?? 'Unknown'} has sent an emergency alert'
+          'body': '${alert.userName ?? 'Unknown'} has sent an emergency alert'
               '${alert.matricNumber != null ? ' (${alert.matricNumber})' : ''}',
           'type': 'sos_alert',
           'is_read': false,
@@ -152,8 +150,7 @@ class SOSService {
 
   Stream<List<SOSAlertModel>> watchAlerts() {
     return FirebaseHelper.watchSOSAlerts().map(
-      (alerts) =>
-          alerts.map((alert) => SOSAlertModel.fromJson(alert)).toList(),
+      (alerts) => alerts.map((alert) => SOSAlertModel.fromJson(alert)).toList(),
     );
   }
 
