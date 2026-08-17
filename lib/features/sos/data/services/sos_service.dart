@@ -113,6 +113,8 @@ class SOSService {
         chronicConditions: chronicConditions,
         currentMedications: currentMedications,
         age: age,
+        address: address,
+        notes: notes,
       );
 
       await _createAdminNotifications(alert);
@@ -139,7 +141,25 @@ class SOSService {
           'is_read': false,
           'data': {
             'alert_id': alert.id,
-            'user_id': alert.userId,
+            'sender_id': alert.userId,
+            'sender_name': alert.userName,
+            'sender_email': alert.userEmail,
+            'matric_number': alert.matricNumber,
+            'phone_number': alert.phoneNumber,
+            'blood_type': alert.bloodType,
+            'allergies': alert.allergies,
+            'ongoing_sickness': alert.ongoingSickness,
+            'genotype': alert.genotype,
+            'prior_illness': alert.priorIllness,
+            'chronic_conditions': alert.chronicConditions,
+            'current_medications': alert.currentMedications,
+            'age': alert.age,
+            'latitude': alert.latitude,
+            'longitude': alert.longitude,
+            'address': alert.address,
+            'notes': alert.notes,
+            'status': alert.status,
+            'created_at': alert.createdAt.toIso8601String(),
           },
         });
       }

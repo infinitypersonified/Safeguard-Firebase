@@ -207,6 +207,49 @@ class _AlertDetailsScreenState extends ConsumerState<AlertDetailsScreen> {
                       ),
                       const SizedBox(height: 16),
 
+                      // Medical Info
+                      GlassmorphicContainer(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Medical Info',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 16),
+                            if (_alert.bloodType != null)
+                              _buildInfoRow(Icons.opacity, 'Blood Type',
+                                  _alert.bloodType!),
+                            if (_alert.allergies != null)
+                              _buildInfoRow(Icons.all_inclusive, 'Allergies',
+                                  _alert.allergies!),
+                            if (_alert.ongoingSickness != null)
+                              _buildInfoRow(Icons.healing, 'Ongoing Sickness',
+                                  _alert.ongoingSickness!),
+                            if (_alert.genotype != null)
+                              _buildInfoRow(
+                                  Icons.favorite, 'Genotype', _alert.genotype!),
+                            if (_alert.priorIllness != null)
+                              _buildInfoRow(Icons.medical_services,
+                                  'Prior Illness', _alert.priorIllness!),
+                            if (_alert.chronicConditions != null)
+                              _buildInfoRow(Icons.coronavirus, 'Chronic',
+                                  _alert.chronicConditions!),
+                            if (_alert.currentMedications != null)
+                              _buildInfoRow(Icons.local_pharmacy, 'Medications',
+                                  _alert.currentMedications!),
+                            if (_alert.age != null)
+                              _buildInfoRow(
+                                  Icons.cake, 'Age', _alert.age.toString()),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+
                       // Contact Info
                       GlassmorphicContainer(
                         padding: const EdgeInsets.all(16),

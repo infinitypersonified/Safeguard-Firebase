@@ -104,6 +104,15 @@ class _SOSScreenState extends ConsumerState<SOSScreen> {
         phoneNumber: user.phoneNumber,
         latitude: location.latitude,
         longitude: location.longitude,
+        // Health fields
+        bloodType: user.bloodType,
+        allergies: user.allergies,
+        ongoingSickness: user.ongoingSickness,
+        genotype: user.genotype,
+        priorIllness: user.priorIllness,
+        chronicConditions: user.chronicConditions,
+        currentMedications: user.currentMedications,
+        age: user.age,
       );
 
       if (!mounted) return;
@@ -297,9 +306,8 @@ class _SOSScreenState extends ConsumerState<SOSScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Location Status',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall),
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall),
                                 const SizedBox(height: 4),
                                 Text(
                                   locationState.currentLocation != null
@@ -333,8 +341,8 @@ class _SOSScreenState extends ConsumerState<SOSScreen> {
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                locationState.currentLocation!
-                                    .formattedCoordinates,
+                                locationState
+                                    .currentLocation!.formattedCoordinates,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall
@@ -357,8 +365,8 @@ class _SOSScreenState extends ConsumerState<SOSScreen> {
                 GlassmorphicContainer(
                   padding: const EdgeInsets.all(16),
                   color: AppColors.error.withValues(alpha: 0.1),
-                  border: Border.all(
-                      color: AppColors.error.withValues(alpha: 0.3)),
+                  border:
+                      Border.all(color: AppColors.error.withValues(alpha: 0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
